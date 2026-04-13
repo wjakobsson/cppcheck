@@ -43,7 +43,7 @@ jobs:
         if: contains(matrix.os, 'ubuntu')
         run: |
           sudo apt-get update
-          sudo apt-get install libxml2-utils libtinyxml2-dev
+          sudo apt-get install libxml2-utils libpcre3-dev libtinyxml2-dev
           # qt6-tools-dev-tools for lprodump
           # qt6-l10n-tools for lupdate
           sudo apt-get install qt6-base-dev libqt6charts6-dev qt6-tools-dev qt6-tools-dev-tools qt6-l10n-tools libglx-dev libgl1-mesa-dev
