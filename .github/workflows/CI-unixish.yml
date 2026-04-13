@@ -403,7 +403,7 @@ jobs:
 
       - name: Run CMake on macOS (with Boost)
         run: |
-          cmake -S . -B cmake.output.boost -Werror=dev -DBUILD_TESTING=On -DCMAKE_DISABLE_PRECOMPILE_HEADERS=On -DCMAKE_COMPILE_WARNING_AS_ERROR=On -DCMAKE_C_COMPILER_LAUNCHER=ccache -DCMAKE_CXX_COMPILER_LAUNCHER=ccache
+          cmake -S . -B cmake.output.boost -Werror=dev -DBUILD_TESTING=On -DCMAKE_DISABLE_PRECOMPILE_HEADERS=On -DCMAKE_COMPILE_WARNING_AS_ERROR=On -DCMAKE_C_COMPILER_LAUNCHER=ccache -DCMAKE_CXX_COMPILER_LAUNCHER=ccache -DCMAKE_CXX_FLAGS="-isystem $(brew --prefix boost)/include"
           grep -q '\-DHAVE_BOOST' ./cmake.output.boost/compile_commands.json
 
       - name: Build with CMake on macOS (with Boost)
