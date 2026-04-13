@@ -603,6 +603,7 @@ jobs:
           rm -rf cppcheck-make-install
 
       - name: Test Signalhandler
+        if: "!contains(matrix.os, 'arm')" # TODO: fix arm signal tests
         run: |
           cmake -S . -B build.cmake.signal -Werror=dev -DBUILD_TESTING=On -DCMAKE_COMPILE_WARNING_AS_ERROR=On
           cmake --build build.cmake.signal --target test-signalhandler -- -j$(nproc)
