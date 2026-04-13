@@ -20,7 +20,7 @@ jobs:
 
     strategy:
       matrix:
-        os: [ubuntu-22.04, ubuntu-22.04-arm, ubuntu-24.04, ubuntu-24.04-arm, macos-14, macos-15, macos-15-intel] # blocked: macos-26, macos-26-intel
+        os: [ubuntu-22.04-arm, ubuntu-24.04, ubuntu-24.04-arm, macos-14, macos-15-intel] # blocked: macos-26, macos-26-intel
       fail-fast: false # Prefer quick result
 
     runs-on: ${{ matrix.os }}
@@ -75,7 +75,7 @@ jobs:
 
     strategy:
       matrix:
-        os: [ubuntu-22.04, ubuntu-22.04-arm, ubuntu-24.04, ubuntu-24.04-arm, macos-14, macos-15, macos-15-intel] # blocked: macos-26, macos-26-intel
+        os: [ubuntu-22.04-arm, ubuntu-24.04, ubuntu-24.04-arm, macos-14, macos-15-intel] # blocked: macos-26, macos-26-intel
       fail-fast: false # Prefer quick result
 
     runs-on: ${{ matrix.os }}
@@ -195,7 +195,7 @@ jobs:
 
     strategy:
       matrix:
-        os: [ubuntu-22.04, ubuntu-22.04-arm, ubuntu-24.04, ubuntu-24.04-arm, macos-14, macos-15, macos-15-intel] # blocked: macos-26, macos-26-intel
+        os: [ubuntu-22.04-arm, ubuntu-24.04, ubuntu-24.04-arm, macos-14, macos-15-intel] # blocked: macos-26, macos-26-intel
         cxxstd: [14, 17, 20]
         # FIXME: macos-15 fails to compile with C++20
         #
@@ -258,7 +258,7 @@ jobs:
 
     strategy:
       matrix:
-        os: [ubuntu-22.04, ubuntu-22.04-arm, ubuntu-24.04, ubuntu-24.04-arm, macos-14, macos-15, macos-15-intel] # blocked: macos-26, macos-26-intel
+        os: [ubuntu-22.04-arm, ubuntu-24.04, ubuntu-24.04-arm, macos-14, macos-15-intel] # blocked: macos-26, macos-26-intel
       fail-fast: false # Prefer quick result
 
     runs-on: ${{ matrix.os }}
@@ -292,7 +292,7 @@ jobs:
 
     strategy:
       matrix:
-        os: [ubuntu-22.04, ubuntu-22.04-arm, ubuntu-24.04, ubuntu-24.04-arm, macos-14, macos-15, macos-15-intel] # blocked: macos-26, macos-26-intel
+        os: [ubuntu-22.04-arm, ubuntu-24.04, ubuntu-24.04-arm, macos-14, macos-15-intel] # blocked: macos-26, macos-26-intel
       fail-fast: false # Prefer quick result
 
     runs-on: ${{ matrix.os }}
@@ -326,7 +326,7 @@ jobs:
 
     strategy:
       matrix:
-        os: [ubuntu-22.04, ubuntu-22.04-arm, ubuntu-24.04, ubuntu-24.04-arm, macos-14, macos-15, macos-15-intel] # blocked: macos-26, macos-26-intel
+        os: [ubuntu-22.04-arm, ubuntu-24.04, ubuntu-24.04-arm, macos-14, macos-15-intel] # blocked: macos-26, macos-26-intel
       fail-fast: false # Prefer quick result
 
     runs-on: ${{ matrix.os }}
@@ -350,7 +350,7 @@ jobs:
 
     strategy:
       matrix:
-        os: [macos-14, macos-15, macos-15-intel, macos-26, macos-26-intel]  # non-macos platforms are already built with Boost in other contexts
+        os: [macos-14, macos-15-intel]  # non-macos platforms are already built with Boost in other contexts
       fail-fast: false # Prefer quick result
 
     runs-on: ${{ matrix.os }}
@@ -447,7 +447,7 @@ jobs:
 
     strategy:
       matrix:
-        os: [ubuntu-22.04, ubuntu-22.04-arm, ubuntu-24.04, ubuntu-24.04-arm, macos-14, macos-15, macos-15-intel] # blocked: macos-26, macos-26-intel
+        os: [ubuntu-22.04-arm, ubuntu-24.04, ubuntu-24.04-arm, macos-14, macos-15-intel] # blocked: macos-26, macos-26-intel
         include:
           - xdist_n: auto
           # FIXME: test_color_tty fails with xdist - see #13278
@@ -471,7 +471,7 @@ jobs:
         if: contains(matrix.os, 'ubuntu')
         run: |
           sudo apt-get update
-          sudo apt-get install libxml2-utils
+          sudo apt-get install libxml2-utils libpcre3-dev
 
       # packages for strict cfg checks
       - name: Install missing software on ubuntu 22.04 (cfg)
