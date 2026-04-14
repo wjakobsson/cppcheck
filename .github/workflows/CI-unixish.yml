@@ -658,7 +658,7 @@ jobs:
 
       # TODO: run with "-n auto" when misra_test.py can be run in parallel
       - name: test addons (Python)
-        if: matrix.os != 'ubuntu-22.04'
+        if: "!contains(matrix.os, 'ubuntu-22.04')"
         run: |
           python3 -m pytest -Werror --strict-markers -vv -n 1 addons/test
         env:
@@ -667,20 +667,20 @@ jobs:
       # TODO: run with "-n auto" when misra_test.py can be run in parallel
       # we cannot specify -Werror since xml/etree/ElementTree.py in Python 3.10 contains an unclosed file
       - name: test addons (Python)
-        if: matrix.os == 'ubuntu-22.04'
+        if: "contains(matrix.os, 'ubuntu-22.04')"
         run: |
           python3 -m pytest --strict-markers -vv -n 1 addons/test
         env:
           PYTHONPATH: ./addons
 
       - name: Build democlient
-        if: matrix.os == 'ubuntu-22.04'
+        if: "contains(matrix.os, 'ubuntu-22.04')"
         run: |
           warnings="-pedantic -Wall -Wextra -Wcast-qual -Wno-deprecated-declarations -Wfloat-equal -Wmissing-declarations -Wmissing-format-attribute -Wno-long-long -Wpacked -Wredundant-decls -Wundef -Wno-shadow -Wno-missing-field-initializers -Wno-missing-braces -Wno-sign-compare -Wno-multichar"
           g++ $warnings -c -Ilib -Iexternals/tinyxml2 democlient/democlient.cpp
 
       - name: Test disabled executors
-        if: matrix.os == 'ubuntu-22.04'
+        if: "contains(matrix.os, 'ubuntu-22.04')"
         run: |
           g++ -Ilib -c cli/threadexecutor.cpp -DDISALLOW_THREAD_EXECUTOR
           test -z "$(nm threadexecutor.o)"
