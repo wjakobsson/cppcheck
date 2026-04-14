@@ -542,8 +542,8 @@ jobs:
 
       - name: Run test/cli (intel - skip slow test) # TODO: fix macos-15-intel timesout performance_test (increase time limit maybe?)
         if: "contains(matrix.os, 'macos-15-intel')"
-        run: /
-          python3 -m pytest -Werror --strict-markers -vv -n ${{ matrix.xdist_n }} test/cli --deselect test/cli/performance_test::test_stack_overflow_AST
+        run: |
+          python3 -m pytest -Werror --strict-markers -vv -n ${{ matrix.xdist_n }} test/cli --deselect test/cli/performance_test.py::test_stack_overflow_AST
 
       # TODO: use the step below instead
       # do not use pushd in this step since we go below the working directory
